@@ -23,7 +23,7 @@ export function MonsterHunt() {
     if (!prompt.trim()) return
     setIsLoading(true)
     try {
-      const response = await fetch('${process.env.NEXT_PUBLIC_API_URL}/api/v1/optimize', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/optimize`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ raw_prompt: prompt })
