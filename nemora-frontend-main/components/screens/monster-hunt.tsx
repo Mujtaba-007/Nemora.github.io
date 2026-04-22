@@ -23,18 +23,35 @@ export function MonsterHunt() {
     if (!prompt.trim()) return
     setIsLoading(true)
     try {
+      const handleOptimize = async () => {
+    if (!prompt.trim()) return
+    setIsLoading(true)
+    setResult(null) // Clear previous results to avoid conflicts
+    try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/optimize`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ raw_prompt: prompt })
       })
-      const data = await response.json()
-      setResult(data)
-      addCO2Saved(data.savings)
+
+      if (!response.ok) {
+        throw new Error(`Server responded with ${response.status}`);
+      }
+
+      const data = await response.json();
+      
+      // Safety check: only set result if data actually contains the fields
+      if (data && data.optimized) {
+        setResult(data);
+        addCO2Saved(data.savings || 0);
+      } else {
+        console.error("Malformed data received:", data);
+      }
     } catch (error) {
-      console.error('Optimization failed:', error)
+      console.error('Optimization failed:', error);
+      alert("The Monster escaped! (Check Railway Logs for the 500 error details)");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }
 
