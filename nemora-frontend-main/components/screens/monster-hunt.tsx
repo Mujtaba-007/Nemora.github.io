@@ -99,7 +99,7 @@ export function MonsterHunt() {
           <div className="glass-card p-4 mb-6 flex items-center justify-center gap-8">
             <div className="text-center">
               <p className="text-xs font-mono text-muted-foreground">CO2 Saved</p>
-              <p className="text-2xl font-bold text-neon-green neon-text">{result.savings.toFixed(3)}g</p>
+              <p className="text-2xl font-bold text-neon-green neon-text">{result.savings?.toFixed(3)}g</p>
             </div>
             <div className="h-10 w-px bg-glass-border" />
             <div className="text-center">
@@ -147,7 +147,7 @@ export function MonsterHunt() {
                 </pre>
                 <div className="flex items-center justify-between text-xs font-mono">
                   <span className="text-muted-foreground">CO2:</span>
-                  <span className="text-neon-red font-bold">{result.original.co2.toFixed(3)}g</span>
+                  <span className="text-neon-red font-bold">{result.original.co2?.toFixed(3)}g</span>
                 </div>
               </div>
             </motion.div>
@@ -180,7 +180,7 @@ export function MonsterHunt() {
                 </pre>
                 <div className="flex items-center justify-between text-xs font-mono">
                   <span className="text-muted-foreground">CO2:</span>
-                  <span className="text-neon-green font-bold">{result.optimized.co2.toFixed(3)}g</span>
+                  <span className="text-neon-green font-bold">{result.optimized.co2?.toFixed(3)}g</span>
                 </div>
               </div>
             </motion.div>
