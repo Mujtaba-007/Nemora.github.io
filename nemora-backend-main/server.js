@@ -3,7 +3,16 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
+const cors = require('cors');
+
+app.use(cors({
+  origin: [
+    "https://mujtaba-007.github.io",
+    "https://nemora.tech" // Let's add this now so the domain works later
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(express.json());
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
