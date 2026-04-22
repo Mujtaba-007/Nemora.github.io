@@ -1,18 +1,17 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors'); // Only here!
 
 const app = express();
-const cors = require('cors');
 
+// This tells the backend to only talk to your current GitHub site
 app.use(cors({
-  origin: [
-    "https://mujtaba-007.github.io",
-    "https://nemora.tech" // Let's add this now so the domain works later
-  ],
+  origin: "https://mujtaba-007.github.io",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+
+// ... (leave the rest of the code exactly as it was)
 app.use(express.json());
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
