@@ -1,14 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', 
+  output: 'export', // Required for GitHub Pages
+  basePath: '/Nemora.github.io', // <--- Add this exactly here
   typescript: {
     ignoreBuildErrors: true,
   },
   images: {
     unoptimized: true,
   },
-  // This matches your repo name so CSS/JS loads correctly
-  basePath: '/Nemora.github.io', 
-}
+};
 
-export default nextConfig
+export default nextConfig;
